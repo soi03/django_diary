@@ -28,6 +28,7 @@ app_name = 'diary'
 urlpatterns = [
     path('admin/', admin.site.urls),
     # 1. GET / diary/ 
+    # path에 접근할 때 views파일의 base를 실행해라  
     path('', views.base, name ='base'), # 메인페이지
     # 2. GET / diary / new / 
     path('write/', views.write, name ='write'), # 일기 작성
@@ -42,3 +43,8 @@ urlpatterns = [
     # # 7. POST / diary/1/edit/
     # # path('update/<int:pk>/', views.update, name = 'update'), # 게시글 수정! (POST)
 ]
+
+# img태그 사용시 사용..? 불필요시 삭제하기
+# from django.conf.urls.static import static
+# from django.conf import settings
+# urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

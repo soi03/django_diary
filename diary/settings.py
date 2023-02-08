@@ -122,3 +122,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#static 파일들이 어디에 있는지를 쓰는곳
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'diary_web/static')]
+
+# 각 static 파일들은 각자 다른 경로에 나뉘어져 있는데 배포를 위해서 하나의 폴더 안에 모으기 위한 경로
+STATIC_ROOT= os.path.join(BASE_DIR,'static')

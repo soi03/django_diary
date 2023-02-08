@@ -1,13 +1,23 @@
 <!doctype html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hello World Template</title>
+    <title>Welcome my diary</title>
+    <style>
+        
+    </style>
+
 </head>
 <body>
-    <h1>Hello World!</h1>
+    <h1>또이의 일기장</h1>
+        <button type="button" onclick="location.href='write'">
+            <img src="{%static 'write.png' %}"> 
+            </img> 
+        </button>
+    </form>
 </body>
 </html>
