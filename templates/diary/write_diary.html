@@ -10,6 +10,15 @@
 </head>
 <body>
     <h1>write your diary</h1>
-    
+    <form method="POST"> 
+        {% comment %} site간 요청 위조를 방지 {% endcomment %}
+        {% csrf_token %} 
+        제목<br>
+        <input type="text" name="postname"><br>
+        내용<br>
+        <textarea rows="10" cols="50" name="contents"></textarea><br>
+        <input type="file" name="mainphoto"><br>
+        <input type="submit" value="글쓰기">
+    </form>
 </body>
 </html>
