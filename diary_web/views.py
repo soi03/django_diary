@@ -12,3 +12,5 @@ def write(request):
     print(request)
     return render(request, 'diary/write_diary.html')
 
+
+
