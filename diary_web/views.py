@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import Myinfo
+from .models import Write
 from .forms import WriteForm
-from django.utils import timezone
-import logging
+# from django.utils import timezone
+# import logging
 # Create your views here.
 
 def base(request):
@@ -20,10 +21,14 @@ def write(request):
     return render(request, "diary/write_diary.html", {"form" : form})
 
 def create(request):
+    write_diary = Write.objects.all()
+    context = {'write_diary': write_diary}
     if request.method == 'POST':
-        diary = WriteForm()
-        diary.date = request.POST['date']
-        diary.title = request.POST['title']
-        diary.content = request.POST['content']
+        diary = Write(date=request.POST.get('date'),
+                          title=request.POST.get('title'),
+                          content=request.POST.get('content'))
+        # diary.date = request.POST.get('date')
+        # diary.title = request.POST.get('title')
+        # diary.content = request.POST.get('content')
         diary.save()
-        return redirect('/base/')
+        return render(request,'diary/list.html',context)
