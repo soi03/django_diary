@@ -33,7 +33,7 @@ urlpatterns = [
     # 2. GET / diary / new / 
     path('write/', views.write, name ='write'), # 일기 작성
     # # 3. POST / diary / new / 
-    # # path('create/', views.create, name ='create'), # 게시글 생성! (POST)
+    path('create/', views.create, name ='create'), # 게시글 생성! (POST)
     # # 4. GET / diary / 1/ 
     # path('<int:pk>/', views.detail, name= 'detail'),
     # # 5. POST / diary /1/ delete/ 
@@ -45,6 +45,6 @@ urlpatterns = [
 ]
 
 # img태그 사용시 사용..? 불필요시 삭제하기
-# from django.conf.urls.static import static
-# from django.conf import settings
-# urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+from django.conf.urls.static import static
+from django.conf import settings
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

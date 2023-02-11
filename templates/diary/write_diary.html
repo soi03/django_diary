@@ -1,24 +1,32 @@
 <!doctype html>
+{% load static %}
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="C:/Users/soi/Desktop/django/django_diary/css_diary/assetscss/bootstrap.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Write! your diary</title>
+    
 </head>
 <body>
-    <h1>write your diary</h1>
-    <form method="POST"> 
+    <div>
+        <h1>write your diary</h1>
         {% comment %} site간 요청 위조를 방지 {% endcomment %}
-        {% csrf_token %} 
-        제목<br>
-        <input type="text" name="postname"><br>
-        내용<br>
-        <textarea rows="10" cols="50" name="contents"></textarea><br>
-        <input type="file" name="mainphoto"><br>
-        <input type="submit" value="글쓰기">
-    </form>
+        <form method="post" action="{% url 'create' %}">
+            {% csrf_token %}
+            <br>
+            {{ form.date }} 
+            <br>
+            {{ form.title }}
+            <br>
+            {{ form.content }}
+            <br>
+            <button class="btn-fill" type='submit'> save </button>
+        </form>
+    </div>
 </body>
 </html>
