@@ -6,8 +6,9 @@ class WriteForm(forms.ModelForm):
         model = Write
         fields = ['date','title', 'content']
         widgets = {
-            'date':forms.DateInput(
+            'date':forms.NumberInput(
                 attrs={
+                    'type' :'date',
                     'class': 'form-control',
                     'style' : 'width:25%; height:30px;',
                     'placeholder': 'today date'
