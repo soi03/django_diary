@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+<html lang="en">
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'fullcalendar-4.3.1/packages/core/main.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'fullcalendar-4.3.1/packages/daygrid/main.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'fullcalendar-4.3.1/packages/timegrid/main.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'fullcalendar-4.3.1/packages/list/main.min.css' %}" />
+  <script src="{% static 'fullcalendar-4.3.1/packages/core/main.min.js' %}"></script>
+  <script src="{% static 'fullcalendar-4.3.1/packages/daygrid/main.min.js' %}"></script>
+  <script src="{% static 'fullcalendar-4.3.1/packages/timegrid/main.min.js' %}"></script>
+  <script src="{% static 'fullcalendar-4.3.1/packages/list/main.min.js' %}"></script>
+  <script src="{% static 'fullcalendar-4.3.1/packages/interaction/main.min.js' %}"></script>
+  <script src="{% static 'fullcalendar-4.3.1/packages/moment/main.min.js' %}"></script>
+</head>
+
+<body>
+  {% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="calendar"></div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock content %}
+
+  {% block script %}
+  <script>
+    $(document).ready(function() {
+      // page is now ready, initialize the calendar...
+      $('#calendar').fullCalendar({
+        // put your options and callbacks here
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay'
+        },
+        defaultView: 'month',
+        selectable: true,
+        selectHelper: true,
+        editable: true,
+        eventLimit: true,
+        events: [
+          {% for event in events %}
+          {
+            title: '{{ event.title }}',
+            start: '{{ event.start_date }}',
+            end: '{{ event.end_date }}',
+            url: '/event/{{ event.id }}/'
+          },
+          {% endfor %}
+        ],
+        select: function(start, end) {
+          // handle day click
+          $('#eventModal').modal('show');
+        },
+        eventClick: function(event) {
+          // handle event click
+          $('#eventModal').modal('show');
+        }
+      })
+    });
+  </script>
+  {% endblock script %}
+</body>
+</html>

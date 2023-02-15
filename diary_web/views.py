@@ -2,12 +2,15 @@ from django.shortcuts import render, redirect
 from .models import Myinfo
 from .models import Write
 from .forms import WriteForm
-# from django.utils import timezone
-# import logging
+from django.views import View
+from django.utils.safestring import mark_safe
+from .models import Calendar
+import json
+
+
 # Create your views here.
 
 def base(request):
-    print(request)
     diary = Myinfo.objects.all() # 모든 데이터
     context = {'diary':diary}
     return render(request, 'diary/base.html', context)
@@ -31,4 +34,19 @@ def create(request):
         # diary.title = request.POST.get('title')
         # diary.content = request.POST.get('content')
         diary.save()
-        return render(request,'diary/list.html',context)
+        return render(request,'diary/list.html', context)
+
+# views.py
+class CalendarView(View):
+    def get(self, request):
+        events = Calendar.objects.all()
+        event_list = []
+        for event in events:
+            event_list.append({
+                'title': event.title,
+                'start': str(event.start_time),
+                'end': str(event.end_time),
+            })
+        event_list = mark_safe(json.dumps(event_list))
+
+        return render(request, 'diary/fullcalendar.html', {'events': event_list})

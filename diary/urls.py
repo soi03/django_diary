@@ -15,14 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 # urlpatterns = [
 #     path('admin/', admin.site.urls),
 # ]
-
 from diary_web import views
-
+from diary_web.views import CalendarView
 app_name = 'diary'
 
 urlpatterns = [
@@ -35,7 +34,8 @@ urlpatterns = [
     # # 3. POST / diary / new / 
     path('create/', views.create, name ='create'), # 게시글 생성! (POST)
     # # 4. GET / diary / 1/ 
-    # path('<int:pk>/', views.detail, name= 'detail'),
+    path('calendar/', CalendarView.as_view(), name= 'calendar'), # 캘린더 보여주기
+    path('schedule/', include('schedule.urls')),
     # # 5. POST / diary /1/ delete/ 
     # path('<int:pk>/delete/', views.delete, name='delete'),
     # # 6. GET /diary /1/edit/
