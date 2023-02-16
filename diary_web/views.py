@@ -6,8 +6,6 @@ from django.views import View
 from django.utils.safestring import mark_safe
 from .models import Calendar
 import json
-
-
 # Create your views here.
 
 def base(request):
@@ -49,4 +47,5 @@ class CalendarView(View):
             })
         event_list = mark_safe(json.dumps(event_list))
 
-        return render(request, 'diary/fullcalendar.html', {'events': event_list})
+        return render(request, 'diary/calendar.html', {'events': event_list})
+

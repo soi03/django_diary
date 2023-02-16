@@ -35,7 +35,6 @@ urlpatterns = [
     path('create/', views.create, name ='create'), # 게시글 생성! (POST)
     # # 4. GET / diary / 1/ 
     path('calendar/', CalendarView.as_view(), name= 'calendar'), # 캘린더 보여주기
-    path('schedule/', include('schedule.urls')),
     # # 5. POST / diary /1/ delete/ 
     # path('<int:pk>/delete/', views.delete, name='delete'),
     # # 6. GET /diary /1/edit/
