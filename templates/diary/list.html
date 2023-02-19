@@ -8,12 +8,14 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
+
     <title>Welcome my diary</title>
 
 </head>
 <body>
-    <div>
-        <h1>Diary List</h1>
+    <div class="content">
+        <h1 class="title">Diary List</h1>
     </div>
         <div class='tbl-header'>
             <table class="tbl">
@@ -40,7 +42,7 @@
             </div>
         </div>
         <br>
-        <div>
+        <div class="div-btn-home">
             <button class='btn-fill'id='btn-home'type="button" onclick="location.href='/'">home</button> 
         </div>
     </body>

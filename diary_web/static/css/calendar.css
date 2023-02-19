@@ -1,52 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+
 * {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+    /* margin: 0; */
+    /* padding: 0; */
     box-sizing: border-box;
-  }
-  
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    font-family: 'Gamja Flower', serif;
   }
   
   .calendar {
-    width: 600px;
-    margin: 50px;
+    width: 900px;
+    margin:auto;
+    padding: 20px;
   }
   
   .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    margin:20px;
   }
   
   .year-month {
     font-size: 35px;
+    color:#46669f;
+    font-size: 40px;
+    font-weight:bolder;
   }
   
   .nav {
     display: flex;
-    border: 1px solid #333333;
+    border: 3px solid #89a0ef;
     border-radius: 5px;
   }
   
   .nav-btn {
     width: 28px;
     height: 30px;
-    border: none;
+    border: 1px solid #89a0ef;
     font-size: 16px;
-    line-height: 34px;
-    background-color: transparent;
+    background-color: #89a0ef;
     cursor: pointer;
+    border-color:#89a0ef;
+    font-weight: bolder;
+    color: #FFFFFF;
   }
   
   .go-today {
     width: 75px;
-    border-left: 1px solid #333333;
-    border-right: 1px solid #333333;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
   }
   
   .days {
@@ -57,22 +59,25 @@
   .day {
     width: calc(100% / 7);
     text-align: center;
+    font-weight: bolder;
+    font-size: 20px;
   }
   
   .dates {
     display: flex;
     flex-flow: row wrap;
     height: 500px;
-    border-top: 1px solid #333333;
-    border-right: 1px solid #333333;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 20px;
   }
   
   .date {
     width: calc(100% / 7);
     padding: 15px;
+    border-radius: 10px;
     text-align: right;
-    border-bottom: 1px solid #333333;
-    border-left: 1px solid #333333;
+    border: 1px solid #90a3ed;
   }
   
   .day:nth-child(7n + 1),
@@ -107,3 +112,4 @@
     border-radius: 50%;
     content: '';
   }
+

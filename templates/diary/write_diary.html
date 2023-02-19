@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/css/calendar.css' %}">
+
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -13,10 +15,10 @@
     
 </head>
 <body>
-    <div>
-        <h1>write your diary</h1>
+    <div class="content">
+        <h1 class="title">write your diary</h1>
         {% comment %} site간 요청 위조를 방지 {% endcomment %}
-        <form method="post" action="{% url 'create' %}">
+        <form method="post" class="form-write" action="{% url 'create' %}">
             {% csrf_token %}
             <br>
             {{ form.date }} 
@@ -25,7 +27,7 @@
             <br>
             {{ form.content }}
             <br>
-            <button class="btn-fill" type='submit'> save </button>
+            <button class="btn-fill" id="btn-save" type='submit'> save </button>
         </form>
     </div>
 </body>
